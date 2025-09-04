@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interactive E-Book</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+    <nav class="navbar">
+        <div class="logo"><a href="#" class="nav-link" onclick="showPage('home', this)"> 👧🏻 Student Book </a></div>
+        <ul class="nav-links">
+        <li><a href="#" class="nav-link active cover" id="cover-nav" onclick="showPage('cover', this)">Home</a></li>
+        <li><a href="#" class="nav-link" id="lesson-nav" onclick="showPage('lesson', this)">Lesson</a></li>
+        <li><a href="#" class="nav-link" id="quiz-nav" onclick="showPage('quiz', this)">Quiz</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="cover" class="page">
+            <div class="cover-box">
+                <img class="cover-img" src="./img/covor.png" alt="Covor">
+                <button class="start-btn" onclick="showPage('lesson')">
+                    Start <span class="arrow">⮕</span>
+                </button>
+            </div>
+        </section>
+        <section id="lesson" class="page" style="display:none;">
+            <div class="cover-box">
+                <img class="cover-img" src="./img/page2.png" alt="Covor">
+                <button class="lesson-content-btn" onclick="showPage('lesson-content')">
+                    Start Lesson <span class="arrow">⮕</span>
+                </button>
+            </div>
+        </section>
+        <section id="lesson-content" class="page" style="display:none;">
+            <div class="cover-box">
+                <img class="cover-img" src="./img/page3.png" alt="Covor">
+                <div class="button-row">
+                    <audio id="lessonAudio" src="./audios/Task Audio.mp3"></audio>
+                    <button class="audio-btn" onclick="toggleAudio()">▶ Play</button>
+                    <button class="next-btn" onclick="showPage('quiz')">Next <span class="arrow">⮕</span></button>
+                </div>
+            </div>
+        </section>
+        <section id="quiz" class="page" style="display:none;">
+            <div class="cover-box">
+                <div class="quiz-container">
+                    <img class="cover-img" src="./img/page4.png" alt="Covor">
+                    <button id="btn-q1" class="quiz-btn unanswered" onclick="openQuestion(1)">Answer me</button>
+                    <button id="btn-q2" class="quiz-btn unanswered" onclick="openQuestion(2)">Answer me</button>
+                    <button id="btn-q3" class="quiz-btn unanswered" onclick="openQuestion(3)">Answer me</button>
+                </div>
+                <div class="result-box">
+                    <p id="score">Score: 0 / 3</p>
+                    <button class="finish-btn" onclick="showPage('home')">Finish</button>
+                </div>
+            </div>
+        </section> 
+        <div id="quizModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <div id="question-container"></div>
+                <div id="modal-feedback" style="margin-top:10px; font-weight:bold;"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    </body>
+</html>
